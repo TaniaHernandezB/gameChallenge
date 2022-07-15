@@ -1,7 +1,7 @@
 // starts game
 function start(){
     document.querySelector('.begin-button').addEventListener('click' , function (){
-        location.href = "./startgame.html";
+        location.href = "startgame.html";
     });
 }
 
