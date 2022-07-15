@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src = "./app.js" defer></script> 
+</head>
+<body>
+    <center><h1>Rock, Paper, Scissors!</h1>
+        <h3>Can you defeat the ultimate master? Win two games out of three to beat the master!</h3>
+        <img src="https://www.playworks.org/colorado/wp-content/uploads/sites/5/2019/09/finalrps-classypage.jpg" style="height: 150px; width: 300px">
+        <br>
+    <h2>Choose your weapon:</h2>
+    <div class="selections">
+        <button class="selection" data-selection="Rock"><img src="https://www.seekpng.com/png/detail/816-8161371_rock-paper-scissor-icon-png.png" style="width:100px; height:100px"></button>
+        <button class="selection" data-selection="Paper"><img src="data:image/png;base64,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" style="width:100px; height:100px"></button>
+        <button class="selection" data-selection="Scissors"><img src="https://www.seekpng.com/png/detail/111-1114370_rock-paper-scissors-rock-paper-scissors-clipart.png" style="width:100px; height:100px"></button>
+      </div>
+      <div class="round">
+        Round:
+        <span class="round-num" data-round-num>0</span>
+        </div>
+      <div class="results">
+        <div>
+          User Wins:
+          <span class="result-score" data-your-score>0</span>
+        </div>
+        <div data-final-column>
+          Computer Wins:
+          <span class="result-score" data-computer-score>0</span>
+        </div>
+  
+         
+        <!--Reload the game -->
+        <button class="reload"></button>
+        
+        <!-- <div class="result-selection winner">✊</div> 
+        <div class="result-selection">✌</div> -->
+      </div> 
+
+
+
+
+</body>
+</html>
