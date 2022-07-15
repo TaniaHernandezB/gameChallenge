@@ -113,6 +113,8 @@ function gameOver(SELECTIONS, rounds){
 
 }
 
+start()
+
 
 
 
