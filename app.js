@@ -9,7 +9,7 @@ const selectionButtons = document.querySelectorAll('[data-selection]')
 const finalColumn = document.querySelector('[data-final-column]')
 const computerScoreSpan = document.querySelector('[data-computer-score]')
 const yourScoreSpan = document.querySelector('[data-your-score]')
-const rounds = document.querySelector('.round-num')
+const rounds = document.querySelector('[data-round-num]')
 // sets game logic
 const SELECTIONS = [
   {
@@ -26,6 +26,7 @@ const SELECTIONS = [
   }
 ]
 
+// allows for buttons to work and processes click for the selected choice
 selectionButtons.forEach(selectionButton => {
   selectionButton.addEventListener('click', e => {
     const selectionName = selectionButton.dataset.selection
@@ -43,10 +44,11 @@ function makeSelection(selection) {
 
   addSelectionResult(computerSelection, computerWinner)
   addSelectionResult(selection, yourWinner)
-// alerts who won or if tied, and adds win to score
-  if (yourWinner) incrementScore(yourScoreSpan),alert('User won round!:)')
-  if (computerWinner) incrementScore(computerScoreSpan), alert('Computer won round!:(')
-  if (yourWinner == computerWinner) alert('User and Computer tied! ;)')
+// alerts who won or if tied, adds win to score, and adds to round num
+  if (yourWinner) incrementScore(yourScoreSpan),alert('User won round!:)'), incrementRound(rounds)
+  if (computerWinner) incrementScore(computerScoreSpan), alert('Computer won round!:('), incrementRound(rounds)
+  if (yourWinner == computerWinner) alert('User and Computer tied! ;)'), incrementRound(rounds)
+
 }
 
 // function to increment the scores for each player
@@ -54,7 +56,7 @@ function incrementScore(scoreSpan) {
   scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
 
-
+// adds the user and comp selection to the displayed list 
 function addSelectionResult(selection, winner) {
   const div = document.createElement('div')
   div.innerText = selection.name
@@ -71,47 +73,25 @@ function randomSelection() {
   const randomIndex = Math.floor(Math.random() * SELECTIONS.length)
   return SELECTIONS[randomIndex]
 }
-// function to increment the scores for each player
-function incrementRound(rounds) {
-    rounds.innerText = parseInt(rounds.innerText) + 1;
-    if (rounds == 3){
-        gameOver(SELECTIONS, rounds)
-        // if (yourScoreSpan === 2,3){
-        //     alert('User won game!')
-        // }if (yourScoreSpan === computerScoreSpan){
-        //     alert('User and computer tied!')
-        // }else{
-        //     alert('Computer won!')
-        // }
-    }
+// function to increment the round number after each round
+function incrementRound(numRound) {
+    numRound.innerText = parseInt(numRound.innerText) + 1;
+    // end after 3 rounds
+    // endNum = '3';
+    // if (numRound  == endNum){
+    //     gameOver( yourScoreSpan, computerScoreSpan)
+    // }
 }
 
-function gameOver(SELECTIONS, rounds){
-    const result = document.querySelector('.result-score');
-    const reloadBtn = document.querySelector('.reload');
-
-    if(yourScoreSpan > computerScoreSpan){
-        result.style.fontSize = '2rem';
-        result.innerText = 'You Won The Game'
-        result.style.color = '#308D46';
-    }
-    else if(yourScoreSpan < computerScoreSpan){
-        result.style.fontSize = '2rem';
-        result.innerText = 'You Lost The Game';
-        result.style.color = 'red';
-    }
-    else{
-        result.style.fontSize = '2rem';
-        result.innerText = 'Tie';
-        result.style.color = 'grey'
-    }
-    reloadBtn.innerText = 'Restart';
-    reloadBtn.style.display = 'flex'
-    reloadBtn.addEventListener('click',() => {
-        window.location.reload();
-    })
-
-}
+// function gameOver(yourScoreSpan, computerScoreSpan){
+//     if (yourScoreSpan>computerScoreSpan){
+//         alert('You beat the ultimate master!')
+//     }if (yourScoreSpan<computerScoreSpan){
+//         alert('You lost to the ultimate master!')
+//     }else{
+//         alert('Tied')
+//     }
+// }
 
 start()
 
