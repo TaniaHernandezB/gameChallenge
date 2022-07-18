@@ -6,6 +6,10 @@ Body {
     margin: 0;
     box-sizing: border-box;
 	}
+.pic{
+   height: 200px;
+   width: 400px;
+}
 
 .selections {
     display: flex;
