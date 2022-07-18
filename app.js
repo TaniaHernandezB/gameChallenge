@@ -45,9 +45,10 @@ function makeSelection(selection) {
   addSelectionResult(computerSelection, computerWinner)
   addSelectionResult(selection, yourWinner)
 // alerts who won or if tied, adds win to score, and adds to round num
-  if (yourWinner) incrementScore(yourScoreSpan),alert('User won round!:)'), incrementRound(rounds)
-  if (computerWinner) incrementScore(computerScoreSpan), alert('Computer won round!:('), incrementRound(rounds)
-  if (yourWinner == computerWinner) alert('User and Computer tied! ;)'), incrementRound(rounds)
+  if (yourWinner) incrementScore(yourScoreSpan),alert('User won round!:)'), incrementRound(rounds);
+  if (computerWinner) incrementScore(computerScoreSpan), alert('Computer won round!:('), incrementRound(rounds);
+  if (yourWinner == computerWinner) alert('User and Computer tied! ;)'), incrementRound(rounds);
+
 
 }
 
@@ -77,21 +78,20 @@ function randomSelection() {
 function incrementRound(numRound) {
     numRound.innerText = parseInt(numRound.innerText) + 1;
     // end after 3 rounds
-    // endNum = '3';
-    // if (numRound  == endNum){
-    //     gameOver( yourScoreSpan, computerScoreSpan)
-    // }
+    if (numRound.innerText == 3){
+        gameOver(yourScoreSpan, computerScoreSpan);
+        
+    }
 }
 
-// function gameOver(yourScoreSpan, computerScoreSpan){
-//     if (yourScoreSpan>computerScoreSpan){
-//         alert('You beat the ultimate master!')
-//     }if (yourScoreSpan<computerScoreSpan){
-//         alert('You lost to the ultimate master!')
-//     }else{
-//         alert('Tied')
-//     }
-// }
+// function for when the round number is equal to 3 - alerts that the game is over and who won the game
+function gameOver(yourScoreSpan, computerScoreSpan){
+    if (yourScoreSpan>computerScoreSpan) alert(' Game over! User beat the ultame master!:)');
+    if (yourScoreSpan<computerScoreSpan) alert(' Game over! User lost to the ultame master!:(');
+    if (yourScoreSpan=computerScoreSpan) alert(' Game over! User and the ultame master tied!:/');
+    alert('User can continue playing same game or refresh game')
+    
+}
 
 start()
 
